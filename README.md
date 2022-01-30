@@ -54,25 +54,31 @@ For the most part, these runs are based on [_default_ parameter settings](https:
   + Bag-of-words models: [baselines](docs/regressions-msmarco-passage.md), [doc2query](docs/regressions-msmarco-passage-doc2query.md), [doc2query-T5](docs/regressions-msmarco-passage-docTTTTTquery.md)
   + Sparse learned models: [DeepImpact](docs/regressions-msmarco-passage-deepimpact.md), [uniCOIL with doc2query-T5](docs/regressions-msmarco-passage-unicoil.md), [uniCOIL with TILDE](docs/regressions-msmarco-passage-unicoil-tilde-expansion.md), [SPLADEv2](docs/regressions-msmarco-passage-distill-splade-max.md)
 + Regressions for MS MARCO (V1) Document Ranking:
-  + Per doc method: [baselines](docs/regressions-msmarco-doc.md), [doc2query-T5](docs/regressions-msmarco-doc-docTTTTTquery-per-doc.md)
-  + Per passage method: [baselines](docs/regressions-msmarco-doc-per-passage.md) ([v2](docs/regressions-msmarco-doc-per-passage-v2.md), [v3](docs/regressions-msmarco-doc-per-passage-v3.md))[*](docs/experiments-msmarco-doc-doc2query-details.md), [doc2query-T5](docs/regressions-msmarco-doc-docTTTTTquery-per-passage.md) ([v3](docs/regressions-msmarco-doc-docTTTTTquery-per-passage-v3.md))[*](docs/experiments-msmarco-doc-doc2query-details.md)
+  + Complete doc[*](docs/experiments-msmarco-doc-doc2query-details.md): [baselines](docs/regressions-msmarco-doc.md), [doc2query-T5](docs/regressions-msmarco-doc-docTTTTTquery.md)
+  + Segmented doc[*](docs/experiments-msmarco-doc-doc2query-details.md): [baselines](docs/regressions-msmarco-doc-segmented.md), [doc2query-T5](docs/regressions-msmarco-doc-segmented-docTTTTTquery.md)
 + Regressions for TREC 2019 Deep Learning Track:
   + Passage ranking: [baselines](docs/regressions-dl19-passage.md), [doc2query-T5](docs/regressions-dl19-passage-docTTTTTquery.md)
-  + Document ranking, per doc method: [baselines](docs/regressions-dl19-doc.md), [doc2query-T5](docs/regressions-dl19-doc-docTTTTTquery-per-doc.md)
-  + Document ranking, per passage method: [baselines](docs/regressions-dl19-doc-per-passage.md), [doc2query-T5](docs/regressions-dl19-doc-docTTTTTquery-per-passage.md)
+  + Document ranking, complete doc[*](docs/experiments-msmarco-doc-doc2query-details.md): [baselines](docs/regressions-dl19-doc.md), [doc2query-T5](docs/regressions-dl19-doc-docTTTTTquery.md)
+  + Document ranking, segmented doc[*](docs/experiments-msmarco-doc-doc2query-details.md): [baselines](docs/regressions-dl19-doc-segmented.md), [doc2query-T5](docs/regressions-dl19-doc-segmented-docTTTTTquery.md)
 + Regressions for TREC 2020 Deep Learning Track:
   + Passage ranking: [baselines](docs/regressions-dl20-passage.md), [doc2query-T5](docs/regressions-dl20-passage-docTTTTTquery.md)
-  + Document ranking, per doc method: [baselines](docs/regressions-dl20-doc.md), [doc2query-T5](docs/regressions-dl20-doc-docTTTTTquery-per-doc.md)
-  + Document ranking, per passage method: [baselines](docs/regressions-dl20-doc-per-passage.md), [doc2query-T5](docs/regressions-dl20-doc-docTTTTTquery-per-passage.md)
+  + Document ranking, complete doc[*](docs/experiments-msmarco-doc-doc2query-details.md): [baselines](docs/regressions-dl20-doc.md), [doc2query-T5](docs/regressions-dl20-doc-docTTTTTquery.md)
+  + Document ranking, segmented doc[*](docs/experiments-msmarco-doc-doc2query-details.md): [baselines](docs/regressions-dl20-doc-segmented.md), [doc2query-T5](docs/regressions-dl20-doc-segmented-docTTTTTquery.md)
 + Regressions for MS MARCO (V2) Passage Ranking:
-  + Bag-of-words models: [baselines](docs/regressions-msmarco-v2-passage.md), [on augmented corpus](docs/regressions-msmarco-v2-passage-augmented.md)
+  + Bag-of-words models, original corpus: [baselines](docs/regressions-msmarco-v2-passage.md), [doc2query-T5](docs/regressions-msmarco-v2-passage-d2q-t5.md)
+  + Bag-of-words models, augmented corpus: [baselines](docs/regressions-msmarco-v2-passage-augmented.md), [doc2query-T5](docs/regressions-msmarco-v2-passage-augmented-d2q-t5.md)
   + Sparse learned models: [uniCOIL noexp zero-shot](docs/regressions-msmarco-v2-passage-unicoil-noexp-0shot.md)
 + Regressions for MS MARCO (V2) Document Ranking:
-  + Bag-of-words models: [baselines](docs/regressions-msmarco-v2-doc.md), [on segmented corpus](docs/regressions-msmarco-v2-doc-segmented.md)
+  + Bag-of-words, complete doc: [baselines](docs/regressions-msmarco-v2-doc.md), [doc2query-T5](docs/regressions-msmarco-v2-doc-d2q-t5.md)
+  + Bag-of-words, segmented doc: [baselines](docs/regressions-msmarco-v2-doc-segmented.md), [doc2query-T5](docs/regressions-msmarco-v2-doc-segmented-d2q-t5.md)
   + Sparse learned models: [uniCOIL noexp zero-shot](docs/regressions-msmarco-v2-doc-segmented-unicoil-noexp-0shot.md)
 + Regressions for TREC 2021 Deep Learning Track:
-  + Passage ranking: [baselines](docs/regressions-dl21-passage.md), [on augmented corpus](docs/regressions-dl21-passage-augmented.md), [uniCOIL noexp zero-shot](docs/regressions-dl21-passage-unicoil-noexp-0shot.md)
-  + Document ranking: [baselines](docs/regressions-dl21-doc.md), [on segmented corpus](docs/regressions-dl21-doc-segmented.md), [uniCOIL noexp zero-shot](docs/regressions-dl21-doc-segmented-unicoil-noexp-0shot.md)
+  + Passage ranking, original corpus: [baselines](docs/regressions-dl21-passage.md), [doc2query-T5](docs/regressions-dl21-passage-d2q-t5.md)
+  + Passage ranking, augmented corpus: [baselines](docs/regressions-dl21-passage-augmented.md), [doc2query-T5](docs/regressions-dl21-passage-augmented-d2q-t5.md)
+  + Passage ranking, sparse learned models: [uniCOIL noexp zero-shot](docs/regressions-dl21-passage-unicoil-noexp-0shot.md)
+  + Document ranking, complete doc: [baselines](docs/regressions-dl21-doc.md), [doc2query-T5](docs/regressions-dl21-doc-d2q-t5.md)
+  + Document ranking, segmented doc: [baselines](docs/regressions-dl21-doc-segmented.md), [doc2query-T5](docs/regressions-dl21-doc-segmented-d2q-t5.md)
+  + Document ranking, sparse learned models: [uniCOIL noexp zero-shot](docs/regressions-dl21-doc-segmented-unicoil-noexp-0shot.md)
 + Regressions for TREC News Tracks (Background Linking Task): [2018](docs/regressions-backgroundlinking18.md), [2019](docs/regressions-backgroundlinking19.md), [2020](docs/regressions-backgroundlinking20.md)
 + Regressions for [FEVER Fact Verification](docs/regressions-fever.md)
 + Regressions for [NTCIR-8 ACLIA (IR4QA subtask, Monolingual Chinese)](docs/regressions-ntcir8-zh.md)
@@ -138,6 +144,7 @@ Beyond that, there are always [open issues](https://github.com/castorini/anserin
 
 ## Release History
 
++ v0.14.0: January 10, 2022 [[Release Notes](docs/release-notes/release-notes-v0.14.0.md)]
 + v0.13.5: November 2, 2021 [[Release Notes](docs/release-notes/release-notes-v0.13.5.md)]
 + v0.13.4: October 22, 2021 [[Release Notes](docs/release-notes/release-notes-v0.13.4.md)]
 + v0.13.3: August 22, 2021 [[Release Notes](docs/release-notes/release-notes-v0.13.3.md)]

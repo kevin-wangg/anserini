@@ -7,7 +7,7 @@ You must download the qrels from NIST's "active participants" password-protected
 The qrels will be added to Anserini when they are publicly released in Spring 2022.
 
 Note that the NIST relevance judgments provide far more relevant passages per topic, unlike the "sparse" judgments provided by Microsoft (these are sometimes called "dense" judgments to emphasize this contrast).
-For additional instructions on working with MS MARCO passage collection, refer to [this page](experiments-msmarco-v2.md).
+For additional instructions on working with MS MARCO V2 passage collection, refer to [this page](experiments-msmarco-v2.md).
 
 The exact configurations for these regressions are stored in [this YAML file](../src/main/resources/regression/dl21-passage.yaml).
 Note that this page is automatically generated from [this template](../src/main/resources/docgen/templates/dl21-passage.template) as part of Anserini's regression pipeline, so do not modify this page directly; modify the template instead.
@@ -20,7 +20,7 @@ Typical indexing command:
 target/appassembler/bin/IndexCollection \
   -collection MsMarcoV2PassageCollection \
   -input /path/to/msmarco-v2-passage \
-  -index indexes/lucene-index.msmarco-v2-passage \
+  -index indexes/lucene-index.msmarco-v2-passage/ \
   -generator DefaultLuceneDocumentGenerator \
   -threads 18 -storePositions -storeDocvectors -storeRaw \
   >& logs/log.msmarco-v2-passage &
@@ -41,25 +41,25 @@ After indexing has completed, you should be able to perform retrieval as follows
 
 ```
 target/appassembler/bin/SearchCollection \
-  -index indexes/lucene-index.msmarco-v2-passage \
+  -index indexes/lucene-index.msmarco-v2-passage/ \
   -topics src/main/resources/topics-and-qrels/topics.dl21.txt -topicreader TsvInt \
   -output runs/run.msmarco-v2-passage.bm25-default.topics.dl21.txt \
   -bm25 &
 
 target/appassembler/bin/SearchCollection \
-  -index indexes/lucene-index.msmarco-v2-passage \
+  -index indexes/lucene-index.msmarco-v2-passage/ \
   -topics src/main/resources/topics-and-qrels/topics.dl21.txt -topicreader TsvInt \
   -output runs/run.msmarco-v2-passage.bm25-default+rm3.topics.dl21.txt \
   -bm25 -rm3 &
 
 target/appassembler/bin/SearchCollection \
-  -index indexes/lucene-index.msmarco-v2-passage \
+  -index indexes/lucene-index.msmarco-v2-passage/ \
   -topics src/main/resources/topics-and-qrels/topics.dl21.txt -topicreader TsvInt \
   -output runs/run.msmarco-v2-passage.bm25-default+ax.topics.dl21.txt \
   -bm25 -axiom -axiom.deterministic -rerankCutoff 20 &
 
 target/appassembler/bin/SearchCollection \
-  -index indexes/lucene-index.msmarco-v2-passage \
+  -index indexes/lucene-index.msmarco-v2-passage/ \
   -topics src/main/resources/topics-and-qrels/topics.dl21.txt -topicreader TsvInt \
   -output runs/run.msmarco-v2-passage.bm25-default+prf.topics.dl21.txt \
   -bm25 -bm25prf &

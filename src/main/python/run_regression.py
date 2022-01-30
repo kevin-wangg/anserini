@@ -135,6 +135,7 @@ def construct_search_commands(yaml_data):
 def evaluate_and_verify(yaml_data, dry_run):
     fail_str = '\033[91m[FAIL]\033[0m '
     ok_str = '   [OK] '
+    failures = False
 
     logger.info('='*10 + ' Verifying Results: ' + yaml_data['corpus'] + ' ' + '='*10)
     for model in yaml_data['models']:
@@ -161,19 +162,19 @@ def evaluate_and_verify(yaml_data, dry_run):
                 if is_close(expected, actual):
                     logger.info(ok_str + result_str)
                 else:
-                    # Fail fast.
-                    logger.error(fail_str + result_str + ' - Failure encountered. Aborting!')
-                    sys.exit()
+                    logger.error(fail_str + result_str)
+                    failures = True
 
-    # If we've gotten to here and it's not a dry run, then all the runs have passed.
     if not dry_run:
-        logger.info("All Tests Passed!")
+        if failures:
+            logger.info('\033[91mFailed tests!\033[0m')
+        else:
+            logger.info("All Tests Passed!")
 
 
 def run_search(cmd):
     logger.info(' '.join(cmd))
-    if not args.dry_run:
-        call(' '.join(cmd), shell=True)
+    call(' '.join(cmd), shell=True)
 
 
 if __name__ == '__main__':
@@ -223,7 +224,11 @@ if __name__ == '__main__':
     if args.search:
         logger.info('='*10 + ' Ranking ' + '='*10)
         search_cmds = construct_search_commands(yaml_data)
-        p = Pool(args.search_pool)
-        p.map(run_search, search_cmds)
+        if args.dry_run:
+            for cmd in search_cmds:
+                logger.info(' '.join(cmd))
+        else:
+            with Pool(args.search_pool) as p:
+                p.map(run_search, search_cmds)
 
         evaluate_and_verify(yaml_data, args.dry_run)
