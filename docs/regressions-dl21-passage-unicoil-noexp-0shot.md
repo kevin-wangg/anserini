@@ -8,7 +8,7 @@ You must download the qrels from NIST's "active participants" password-protected
 The qrels will be added to Anserini when they are publicly released in Spring 2022.
 
 Note that the NIST relevance judgments provide far more relevant passages per topic, unlike the "sparse" judgments provided by Microsoft (these are sometimes called "dense" judgments to emphasize this contrast).
-For additional instructions on working with MS MARCO passage collection, refer to [this page](experiments-msmarco-v2.md).
+For additional instructions on working with MS MARCO V2 passage collection, refer to [this page](experiments-msmarco-v2.md).
 
 The exact configurations for these regressions are stored in [this YAML file](../src/main/resources/regression/dl21-passage-unicoil-noexp-0shot.yaml).
 Note that this page is automatically generated from [this template](../src/main/resources/docgen/templates/dl21-passage-unicoil-noexp-0shot.template) as part of Anserini's regression pipeline, so do not modify this page directly; modify the template instead.
@@ -21,7 +21,7 @@ Typical indexing command:
 target/appassembler/bin/IndexCollection \
   -collection JsonVectorCollection \
   -input /path/to/msmarco-v2-passage-unicoil-noexp-0shot \
-  -index indexes/lucene-index.msmarco-v2-passage-unicoil-noexp-0shot \
+  -index indexes/lucene-index.msmarco-v2-passage-unicoil-noexp-0shot/ \
   -generator DefaultLuceneDocumentGenerator \
   -threads 18 -impact -pretokenized \
   >& logs/log.msmarco-v2-passage-unicoil-noexp-0shot &
@@ -41,7 +41,7 @@ After indexing has completed, you should be able to perform retrieval as follows
 
 ```
 target/appassembler/bin/SearchCollection \
-  -index indexes/lucene-index.msmarco-v2-passage-unicoil-noexp-0shot \
+  -index indexes/lucene-index.msmarco-v2-passage-unicoil-noexp-0shot/ \
   -topics src/main/resources/topics-and-qrels/topics.dl21.unicoil-noexp.0shot.tsv.gz -topicreader TsvInt \
   -output runs/run.msmarco-v2-passage-unicoil-noexp-0shot.unicoil-noexp-0shot.topics.dl21.unicoil-noexp.0shot.tsv.gz \
   -impact -pretokenized &

@@ -1,6 +1,7 @@
 # Anserini: Regressions for [MS MARCO (V2) Passage Ranking](https://microsoft.github.io/msmarco/TREC-Deep-Learning.html)
 
 This page describes regression experiments for passage ranking _on the augmented version_ of the MS MARCO (V2) passage corpus using the dev queries, which is integrated into Anserini's regression testing framework.
+Here, we cover bag-of-words baselines.
 For more complete instructions on how to run end-to-end experiments, refer to [this page](experiments-msmarco-v2.md).
 
 The exact configurations for these regressions are stored in [this YAML file](../src/main/resources/regression/msmarco-v2-passage-augmented.yaml).
@@ -14,7 +15,7 @@ Typical indexing command:
 target/appassembler/bin/IndexCollection \
   -collection MsMarcoV2PassageCollection \
   -input /path/to/msmarco-v2-passage-augmented \
-  -index indexes/lucene-index.msmarco-v2-passage-augmented \
+  -index indexes/lucene-index.msmarco-v2-passage-augmented/ \
   -generator DefaultLuceneDocumentGenerator \
   -threads 18 -storePositions -storeDocvectors -storeRaw \
   >& logs/log.msmarco-v2-passage-augmented &
@@ -34,45 +35,45 @@ After indexing has completed, you should be able to perform retrieval as follows
 
 ```
 target/appassembler/bin/SearchCollection \
-  -index indexes/lucene-index.msmarco-v2-passage-augmented \
+  -index indexes/lucene-index.msmarco-v2-passage-augmented/ \
   -topics src/main/resources/topics-and-qrels/topics.msmarco-v2-passage.dev.txt -topicreader TsvInt \
   -output runs/run.msmarco-v2-passage-augmented.bm25-default.topics.msmarco-v2-passage.dev.txt \
   -bm25 &
 target/appassembler/bin/SearchCollection \
-  -index indexes/lucene-index.msmarco-v2-passage-augmented \
+  -index indexes/lucene-index.msmarco-v2-passage-augmented/ \
   -topics src/main/resources/topics-and-qrels/topics.msmarco-v2-passage.dev2.txt -topicreader TsvInt \
   -output runs/run.msmarco-v2-passage-augmented.bm25-default.topics.msmarco-v2-passage.dev2.txt \
   -bm25 &
 
 target/appassembler/bin/SearchCollection \
-  -index indexes/lucene-index.msmarco-v2-passage-augmented \
+  -index indexes/lucene-index.msmarco-v2-passage-augmented/ \
   -topics src/main/resources/topics-and-qrels/topics.msmarco-v2-passage.dev.txt -topicreader TsvInt \
   -output runs/run.msmarco-v2-passage-augmented.bm25-default+rm3.topics.msmarco-v2-passage.dev.txt \
   -bm25 -rm3 &
 target/appassembler/bin/SearchCollection \
-  -index indexes/lucene-index.msmarco-v2-passage-augmented \
+  -index indexes/lucene-index.msmarco-v2-passage-augmented/ \
   -topics src/main/resources/topics-and-qrels/topics.msmarco-v2-passage.dev2.txt -topicreader TsvInt \
   -output runs/run.msmarco-v2-passage-augmented.bm25-default+rm3.topics.msmarco-v2-passage.dev2.txt \
   -bm25 -rm3 &
 
 target/appassembler/bin/SearchCollection \
-  -index indexes/lucene-index.msmarco-v2-passage-augmented \
+  -index indexes/lucene-index.msmarco-v2-passage-augmented/ \
   -topics src/main/resources/topics-and-qrels/topics.msmarco-v2-passage.dev.txt -topicreader TsvInt \
   -output runs/run.msmarco-v2-passage-augmented.bm25-default+ax.topics.msmarco-v2-passage.dev.txt \
   -bm25 -axiom -axiom.deterministic -rerankCutoff 20 &
 target/appassembler/bin/SearchCollection \
-  -index indexes/lucene-index.msmarco-v2-passage-augmented \
+  -index indexes/lucene-index.msmarco-v2-passage-augmented/ \
   -topics src/main/resources/topics-and-qrels/topics.msmarco-v2-passage.dev2.txt -topicreader TsvInt \
   -output runs/run.msmarco-v2-passage-augmented.bm25-default+ax.topics.msmarco-v2-passage.dev2.txt \
   -bm25 -axiom -axiom.deterministic -rerankCutoff 20 &
 
 target/appassembler/bin/SearchCollection \
-  -index indexes/lucene-index.msmarco-v2-passage-augmented \
+  -index indexes/lucene-index.msmarco-v2-passage-augmented/ \
   -topics src/main/resources/topics-and-qrels/topics.msmarco-v2-passage.dev.txt -topicreader TsvInt \
   -output runs/run.msmarco-v2-passage-augmented.bm25-default+prf.topics.msmarco-v2-passage.dev.txt \
   -bm25 -bm25prf &
 target/appassembler/bin/SearchCollection \
-  -index indexes/lucene-index.msmarco-v2-passage-augmented \
+  -index indexes/lucene-index.msmarco-v2-passage-augmented/ \
   -topics src/main/resources/topics-and-qrels/topics.msmarco-v2-passage.dev2.txt -topicreader TsvInt \
   -output runs/run.msmarco-v2-passage-augmented.bm25-default+prf.topics.msmarco-v2-passage.dev2.txt \
   -bm25 -bm25prf &
